@@ -1,0 +1,21 @@
+extends layouts/base.pug
+
+block content
+    h1 Sales
+
+    table.table.table-striped
+        thead
+            tr
+                th.bg-info.text-white Date of Sale
+                th.bg-info.text-white Customer
+                th.bg-info.text-white Product
+                th.bg-info.text-white Quantity
+                th.bg-info.text-white Total Sales
+        tbody
+            each sale in sales
+                tr
+                    td= (sale.SalesDate && sale.SalesDate.toISOString().split('T')[0]) || 'N/A'
+                    td= sale.CustomerName || 'N/A'
+                    td= sale.ItemName || 'N/A'
+                    td= sale.Quantity || 0
+                    td= `$${(sale.TotalSales && Number(sale.TotalSales).toFixed(2)) || 0}`

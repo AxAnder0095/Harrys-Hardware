@@ -1,0 +1,34 @@
+extends layouts/base.pug
+
+block content
+    .row
+        .col-md-4.list-section
+            h2 Top Customers
+            ol
+                - customers.sort((a, b) => b.TotalSales - a.TotalSales)
+                each customer, index in customers
+                    if index < 5
+                        li= (customer.CustomerName || 'N/A') + ": $" + (customer.TotalSales)
+            a.btn.btn-secondary(href='/customers') Show All
+
+        .col-md-4.list-section
+            h2 Top Products
+            ol
+                - products.sort((a, b) => b.TotalSales - a.TotalSales)
+                each product, index in products
+                    if index < 5
+                        li= (product.ItemName || 'N/A') + ": $" + (product.TotalSales)
+            a.btn.btn-secondary(href='/products') Show All
+
+        .col-md-4.list-section
+            h2 Sales by Month
+            ol
+                - sales.sort((a, b) => b.TotalSales - a.TotalSales)
+                each sale, index in sales
+                    if index < 5
+                        - let dateParts = sale.Date.split('-');
+                        - let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                        - let formattedDate = monthNames[parseInt(dateParts[1]) - 1] + ' ' + dateParts[0];
+                        li= formattedDate + ": $" + (sale.TotalSales)
+
+            a.btn.btn-secondary(href='/sales') Show All

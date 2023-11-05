@@ -1,0 +1,28 @@
+doctype html
+html
+    head
+        title Happy Harry's Hardware
+        link(href="/css/bootstrap.css", rel="stylesheet")
+        link(href="/css/main.css", rel="stylesheet")
+        script(src="/js/bootstrap.js", type="application/javascript")
+
+    body.bg-warning
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-info.static-top
+            .container
+                a.navbar-brand(href='#')
+                    img(src='imgs/capybara.jpg', alt='My Logo', height='50')
+                button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+                #navbarSupportedContent.collapse.navbar-collapse
+                    ul.navbar-nav.ms-auto
+                        li.nav-item
+                            a.nav-link(href="/" class=(current === 'home' ? 'active' : '')).text-dark Home
+                        li.nav-item
+                            a.nav-link(href="/customers" class=(current === 'customers' ? 'active' : '')).text-dark Customers
+                        li.nav-item
+                            a.nav-link(href="/products" class=(current === 'products' ? 'active' : '')).text-dark Products
+                        li.nav-item
+                            a.nav-link(href="/sales" class=(current === 'sales' ? 'active' : '')).text-dark Sales
+
+        .container
+            block content
